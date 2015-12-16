@@ -1,0 +1,220 @@
+/* 2013 Donation form styles - v3 - 28 June 2013 */
+[[U8:text/css]]
+/* Form Styles */
+/* Reset main wrapper */
+body { background: url('../images/content/pagebuilder/Membership-background_v2.jpg') no-repeat center top #fff; 
+margin: 0; 
+padding: 0; 
+background-size:cover;
+}
+
+
+
+label { white-space: normal; }
+#id_bar { margin: 20px 0 0; }
+#left_content { width: 0;}
+#right_main { width: 100%; }
+#contain .breadcrumbComponent { visibility: hidden; display: inline; }
+#contain .breadcrumbComponent a, #contain .breadcrumbComponent a:link { display: none; }
+#memDonWrap *{outline:none;}
+#memDonWrap, #memDonWrap p {color:#333;background:transparent;}
+#memDonWrap,#memDonWrap div,#memDonWrap dl,#memDonWrap dt,#memDonWrap dd,#memDonWrap ul,#memDonWrap ol,#memDonWrap li,#memDonWrap h1,#memDonWrap h2,#memDonWrap h3,#memDonWrap h4,#memDonWrap h5,#memDonWrap h6,#memDonWrap pre,#memDonWrap code,#memDonWrap form,#memDonWrap fieldset,#memDonWrap legend,#memDonWrap input,#memDonWrap textarea,#memDonWrap p,#memDonWrap blockquote,#memDonWrap th,#memDonWrap td{margin:0;padding:0;}
+#memDonWrap table{border-collapse:collapse;border-spacing:0;}
+#memDonWrap fieldset,#memDonWrap img{border:0;}
+#memDonWrap address,#memDonWrap caption,#memDonWrap cite,#memDonWrap code,#memDonWrap dfn,#memDonWrap em,#memDonWrap strong,#memDonWrap th,#memDonWrap var{font-style:normal;font-weight:normal;}
+#memDonWrap caption,#memDonWrap th{text-align:left;}
+#memDonWrap h1,#memDonWrap h2,#memDonWrap h3,#memDonWrap h4,#memDonWrap h5,#memDonWrap h6{font-size:100%;font-weight:normal;}
+#memDonWrap q:before,#memDonWrap q:after{content:'';}
+#memDonWrap abbr,#memDonWrap acronym{border:0;font-variant:normal;}
+#memDonWrap sup,#memDonWrap sub{line-height:-1px;vertical-align:text-top;}
+#memDonWrap sub{vertical-align:text-bottom;}
+#memDonWrap input,#memDonWrap textarea,#memDonWrap select{font-family:inherit;font-size:inherit;font-weight:inherit;}
+#memDonWrap, #memDonWrap select, #memDonWrap option {font:12px arial,helvetica,sans-serif;*font-size:small;*font:x-small;}
+#memDonWrap table{font-size:inherit;font:100%;}
+#memDonWrap pre,#memDonWrap code,#memDonWrap kbd,#memDonWrap samp,#memDonWrap tt{font-family:monospace;*font-size:108%;line-height:99%;}
+.clrfix{zoom:1;}
+.clrfix:after{content:".";display:block;height:0;width:0;line-height:0;clear:both;visibility:hidden;}
+#textarea { background-color: #fff; padding: 15px !important; }
+#textarea #memDonWrap a { color: #69b247; }
+#memDonWrap { margin: 0 auto 0; width: 800px; }
+#memDonWrap .headingBar { background-color: #69b247; color: #fff; height: 30px; line-height: 1.4em; width: 100%; }
+#memDonWrap #amountWrap .headingBar { height: auto; }
+#memDonWrap h1 { color: #69B247; font-size: 21px; font-weight: bold; }
+#memDonWrap h2 { font-size: 15px; font-weight: bold; line-height: 1.4em; padding: 20px 15px; }
+#memDonWrap h2.leftHead { float: left; padding: 5px 0 0 15px; width: 280px; }
+#memDonWrap h2.rightHead { float: left; padding: 5px 0 0 0; }
+#memDonWrap h3 { color: #999; font-size: 13px; font-weight: bold; line-height: 1.4em; margin: 0; }
+#memDonWrap label { color: #000; line-height: 1.4em; }
+#memDonWrap li label { font-weight: normal; }
+#memDonWrap #levelsLeft li label { font-weight: bold; line-height: 0.8em; }
+#memDonWrap #taxExemptGift span { font-weight: bold; line-height: 0.8em; }
+#memDonWrap #perksPrograms li { background-color: #E5E4E5; line-height: 1.4em; }
+#memDonWrap #perksPrograms span { font-weight: bold; line-height: 1.4em; }
+#memDonWrap select { border: 1px solid #999; -mox-border-radius: 3px; -webkit-border-radius: 3px; border-radius: 3px; -moz-box-shadow: 2px 2px 2px #ccc; -webkit-box-shadow: 2px 2px 2px #ccc; box-shadow: 2px 2px 2px #ccc; width: 99%; }
+#memDonWrap .memFFWrap select { width: 97%; }
+#memDonWrap #amountWrap select { margin: 6px 20px; }
+#memDonWrap ul.levels { float: left; margin: 6px 0; width: 250px; }
+#memDonWrap ul li { list-style-type: none; }
+/*#memDonWrap ul.levels li { display: none; }*/
+#memDonWrap ul.levels li.individual, #memDonWrap ul.levels li.family, #memDonWrap ul.levels li.toggle { display: list-item; }
+#memDonWrap ul.levels li.higherLevel { display: none; }
+#memDonWrap input, #memDonWrap #mem-w textarea { border: 1px solid #ccc; -moz-box-shadow: 1px 1px 1px #ccc; -webkit-box-shadow: 1px 1px 1px #ccc; box-shadow: 1px 1px 1px #ccc; color #595959; font-weight: normal; }
+#memDonWrap input[type=radio] { box-shadow: none; }
+#memDonWrap ul.levels li input { box-shadow: none; }
+#memDonWrap ul.levels li input#txt_amount_other { box-shadow: 1px 1px 1px #ccc; }
+#memDonWrap #levelsLeft ul.options { margin-top: 5px; }
+#memDonWrap #levelsLeft ul.options li.optionGift { background-color: #EDEDED; display: block; margin: 0 0 20px -10px; padding: 10px 10px 5px; width: 186px; }
+#memDonWrap img.question { cursor: pointer; }
+#memDonWrap #navTabs ul li { background-color: #999; border-left: 1px solid #fff;float: left; height: 30px; line-height: 0.9em; list-style-type: none; padding-top: 4px; position: relative; text-align: center; width: 118px; }
+#memDonWrap #navTabs ul li.sl { height: 24px; padding-top: 10px; width: 117px; }
+#memDonWrap #navTabs ul li.selected { background-color: #69B247; }
+#memDonWrap #navTabs ul li a,#memDonWrap #navTabs ul li a:link, #memDonWrap #navTabs ul li a:visited, #memDonWrap #navTabs ul li a:hover, #memDonWrap #navTabs ul li a:active { color: #fff; font-size: 14px; line-height: 0.8em; text-decoration: none; }
+#memDonWrap #levelsLeft a,#memDonWrap #levelsLeft a:link, #memDonWrap #levelsLeft a:visited, #memDonWrap #levelsLeft a:hover, #memDonWrap #levelsLeft a:active { color: #6767af; text-decoration: none; }
+#navTabs li.selected a:after {
+  content: url('../images/content/pagebuilder/membership_nav_pointer.jpg');
+  position: absolute;
+  right: -3px;
+  bottom: -25px;
+  z-index: 100;
+}
+
+#memDonWrap #memWS label.error, #memDonWrap #memWS .memWrapCol label.error, #memDonWrap #memWS .memFFWrap label.error, #memDonWrap label.error { color: #f33; font-size: 76.9%; font-weight: normal; text-transform: uppercase; }
+#memDonWrap label.error .addl-error-text { display: inline-block; text-transform: none; }
+#memDonWrap ul.email-types label.error { margin-top: 20px; position: absolute; }
+#memDonWrap ul#hi-radio-wrap label.error { margin-top: 40px; *margin-top: 65px; position: absolute; }
+/* SIDEBAR RAIL */
+#memDonWrap #memWS { background-color: #e5e4e5; color: #333; float: right; width: 594px; margin-bottom: -75px; }
+#memDonWrap #memWS p { color: #333; display: block; float: left; font-size: 12px; height: 108px; overflow: hidden; padding: 13px 0; width: 260px; }
+#memDonWrap #memWS h4 { color: #0f1338; font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif; font-size: 19px; margin-top: 10px; text-align: center; }
+#memDonWrap #memWS #vs_seal { float: right; }
+/* MAIN RAIL */
+#memDonWrap #memW { background-color: #fff; float: left; width: 206px; }
+#memDonWrap .section { clear: both; margin-bottom: 45px; padding: 0; }
+#memDonWrap div#requiredNote { font-weight: normal;  margin: 5px 0 15px; }
+#memDonWrap #giftHeading { margin: 25px 10px 20px; }
+#memDonWrap .sectionInner { padding: 15px 35px 0; }
+#memDonWrap .sectionInner .memFFWrap { margin: 0; }
+#memDonWrap #memWS label, #memDonWrap #memWS input, #memDonWrap #memWS select { color: #6d6d6d; }
+#memDonWrap #memWS label { font-weight: bold; }
+#memDonWrap #memWS .sectionInner p { padding: 0; }
+#memDonWrap #memWS .dp { margin-bottom: 7px; }
+/* SECTION - Amount */
+#memDonWrap #amountWrap { position: relative; }
+#memDonWrap #amountWrap ul { float: left; margin: 25px 15px 0 10px; width: 175px; }
+#memDonWrap ul li { font-family: Arial, Helvetica, sans-serif; font-size: 12px; font-weight: bold; height: 25px; line-height: 2.3em; }
+#memDonWrap #benefitsIconsArea { border: 6px solid #7abf4a; float: left; margin-bottom: 10px; width: 194px; }
+#memDonWrap #benefitsIconsHeading { padding: 10px 7px 0px; }
+#memDonWrap #benefitsIcons { padding: 5px 3px 6px 5px; position: relative; }
+#memDonWrap #benefitsIcons .benefitsIcon { float: left; margin: 1px 0 0 2px; }
+#memDonWrap #levelsLeft { float: left; width: 200px; height: 239px; }
+#memDonWrap .giftBenefitsImage { float: left; margin-right: 15px; }
+#memDonWrap .giftBenefits { display: none; height: 144px; margin: 0 0px 55px; }
+#memDonWrap #benefits_1 { display: block; }
+#memDonWrap .giftBenefits h3 { color: #69b247; font-size: 18px; font-weight: normal; margin: 0; }
+#memDonWrap .giftBenefits p { color: #69b247; font-size: 12px; padding: 7px 0 10px; }
+#memDonWrap .giftBenefits p span.larger { font-size: 18px; }
+#memDonWrap .giftBenefits ul { list-style-image: url('../images/content/pagebuilder/arrow-gold.gif'); float: left; margin-right: 10px; width: 210px; }
+#textarea #memDonWrap .giftBenefits ul li { font-size: 12px; line-height: 1.4em; margin-left: 16px; }
+#memDonWrap #perksInfo {
+  background: #fff;
+  border: 1px solid #ccc;
+  box-shadow: 0 3px 3px #666;
+  padding: 8px;
+  position: absolute;
+  right: -465px;
+  width: 440px;
+}
+#memDonWrap #optionsInfo {
+  background: #fff;
+  border: 1px solid #ccc;
+  box-shadow: 0 3px 3px #666;
+  padding: 8px;
+  position: absolute;
+  right: -216px;
+  top: 315px;
+  width: 200px;
+}
+#memDonWrap .perks,#memDonWrap .perks div { display: none; }
+#memDonWrap .optionsDesc,#memDonWrap .optionsDesc div { display: none; }
+#memDonWrap #familyWarning { display: none; }
+#memDonWrap #greenswardWarning { display: none; }
+/* SECTION - Card Recipients */
+#memDonWrap #memEcardWrap { display: none; }
+#memDonWrap #eCardSection { display: none; }
+#memDonWrap #ecardRecipients, #memDonWrap #ecardSubject { width: 361px; }
+#memDonWrap #eCardSection p { padding-left: 1px; }
+/* SECTION - Personal Information */
+#memDonWrap .memWrapCol { float: left; margin: 5px 0 15px 35px; width: 240px; }
+#memDonWrap #memWS label { display: block; padding-left: 1px; }
+#memDonWrap .memWrapCol input, #memDonWrap .memWrapCol textarea { margin-bottom: 3px; padding: 2px; width: 97%; }
+#memDonWrap .memWrapCol #emailOptIn, #memDonWrap .memWrapCol #addSecondPerson, #memDonWrap .additionalOptions input { float: left; margin-right: 10px; width: auto; }
+#memDonWrap .memWrapCol #addSecondPersonArea { margin-top: 13px; }
+#memDonWrap .additionalOptions #annualReportName { width: 95%; }
+#memDonWrap .additionalOptions.memWrapCol { margin-top: 15px; }
+#memDonWrap .additionalOptions label { margin-bottom: 15px; }
+#memDonWrap #additionalPerson { display: none; }
+#memDonWrap #memWS #anonymousDonationArea, #memDonWrap #memWS #annualReportNameArea { display: none; }
+/* SECTION - Payment Information */
+#memDonWrap .memFFWrap.payment { padding: 15px 35px 0; }
+#memDonWrap .memFFWrap.payment label { display: block; padding-left: 3px; }
+#memDonWrap .memFFWrap.payment #cardNumber { width: 180px; }
+#memDonWrap .memFFWrap.payment #cardCVV { width: 57px; }
+#memDonWrap .memFFWrap.payment .special select { width: 15%; }
+#memDonWrap .memFFWrap.payment label.error { display: none; }
+#memDonWrap .cardTypesWrap li { float: left; -moz-opacity: .20; filter: alpha(opacity=20); opacity: .20; width: 62px; }
+/* SECTION - Submit Wrap */
+#memDonWrap #submitWrap {
+    clear: both;
+	float: right;
+	margin-right: 25px;
+	min-height: 60px;
+}
+#memDonWrap #btnSubmit {
+	background: url('../images/content/pagebuilder/Green-submit-button-v2.png') scroll no-repeat 0 0 transparent;
+	border: 0;
+	color: transparent;
+	cursor: pointer;
+	float: right;
+	font-size: 0;
+	height: 37px;
+	margin: 30px 0 20px;
+	width: 103px;
+}
+/* Correcting borders on radio buttons */
+#memDonWrap #memW ul.levels li input { border: 0; }
+#memDonWrap #memW ul.levels li input.valid { background-color: #ebebeb; }
+/* Shadow Box styles */
+#sb-player p { color: #000; font-size: 14px; }
+/* Errors styles */
+#memDonWrap input.error, #memDonWrap #memWS select.error, #memDonWrap #memWS textarea.error { background-color: #f33; color: #000; }
+#memDonWrap input.valid, #memDonWrap select.valid, #memDonWrap textarea.valid { background-color: #FFF; }
+#memDonWrap label#ccApiErrors {
+	font-size: 14px;
+	font-weight: bold;
+	margin: 20px 0;
+}
+#memDonWrap #memWS label.error { display: inline; }
+#memDonWrap #memWS .donAmtConfirm label { 
+	font-size: 14px;
+	font-weight: bold;
+	margin: 20px 0;
+	color: #FFFFFF;
+        background-color: #69B247;
+        padding: 5px;
+}
+#othError { float: left; margin: 3px; line-height: 12px; }
+/* Disabled styles */
+#memDonWrap .disabled, #memDonWrap #memWS .disabled, #memDonWrap .disabled label, #memDonWrap #memWS .disabled label { color: #999; }
+#memDonWrap .disabled a, #memDonWrap .disabled a:link, #memDonWrap .disabled a:visited, #memDonWrap .disabled a:hover, #memDonWrap .disabled a:active { color: #999; cursor: default; }
+#memDonWrap #levelsLeft .disabled a, #memDonWrap #levelsLeft .disabled a:link, #memDonWrap #levelsLeft .disabled a:visited, #memDonWrap #levelsLeft .disabled a:hover, #memDonWrap #levelsLeft .disabled a:active { color: #999; cursor: default; }
+#footer { background-color: #fff;  margin-top: 0;}
+/*End Form Styles */
+#memDonWrap select#cardExpDateMonth, #memDonWrap select#cardExpDateYear {
+	width: 90px;
+}
+#memDonWrap input#cardCVV {
+	width: 75px;
+}
+#memDonWrap #memWS #submitWrap label {
+font-size: 16px;
+}

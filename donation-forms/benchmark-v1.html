@@ -1,0 +1,622 @@
+<!-- Benchmark Page  - v1 - based on C2S v21 - 29Oct2014 -->
+
+<link rel="stylesheet" type="text/css" href="https://[[S29:SECURE_DOMAIN]][[S29:SECURE_PATH]]/SPageServer?pagename=C2S_donation_styles&pgwrap=n" />
+
+
+<!-- MAIN stylesheet -->
+<style type="text/css">
+#contentMain { width: 935px; font-family: Arial,Helvetica,sans-serif; font-size: 15px; line-height: 18px; color: #666666; }
+
+.clickable { cursor: pointer; }
+
+
+#banner { width: 900px; }
+#upperContent { margin-left: 0; }
+#upperLeft { float: left; width: 520px; margin-top: 50px; }
+.thermoBlock { float: right; margin-right: 1px; width: 386px; }
+#thermoImg { float: left; margin-top: 49px; }
+#amtRaisedImg { float: right; z-index:-1; }
+#trophyLink { margin-left: 10px; }
+#dollarAmt {
+	font-size: 34px;
+	position: absolute;
+	top: 550px;
+	right: 110px; 
+}
+#numberParties {
+	font-size: 15px;
+	color: #fff;
+	width: 166px;
+	position: absolute;
+	top: 611px;
+	right: 100px; 
+}
+.horizDivider {
+    background: url("https://secure2.convio.net/cpc/c2s/nav-bg-flip.jpg") no-repeat scroll center bottom transparent;
+    float: left;
+    margin: 20px 0 25px;
+    padding: 0 0 15px;
+    position: relative;
+    width: 100%;
+}
+#lowerContent { height: 600px; clear: both; }
+#lowerLeft { float: left; }
+#contact { margin: 40px 0; }
+#lowerRight { float: right; margin-right: 35px; width: 312px; vertical-align: top; height: 600px; }
+#c2sVideo { vertical-align: text-bottom; }
+#sponsorLogos { 
+	float: left;
+	width: 900px;
+	height: 170px;
+	background-color: #ebebeb;
+	padding: 20px;
+}
+#specificPartyInfo { 
+	border-style: solid;
+	border-width: 2px;
+	border-color: #78c043;
+	padding: 20px;
+	clear: both; 
+	width: 475px;
+        float: left;
+}
+.specificRow { clear: both; display: block; padding: 12px 0; }
+.specificColumn { float: left; width: 70px; }
+#specificDetails, #specificHosts { float: right; width: 365px; }
+#lowerContent .dp { min-height: 30px; }
+#lowerContent label { display: inline-block; }
+label.error, #errorMessage { color: red; }
+.formLeftColumn {
+	clear: both;
+	float: left;
+    margin-bottom: 20px;
+    padding: 0;
+	width: 425px;
+}
+.formRightColumn {
+	float: right;
+	margin-right: 35px;
+    margin-bottom: 20px;
+    padding: 0;
+	width: 425px;
+}
+.innerLeftColumn {
+	width: auto;
+        float: left;
+}
+.innerRightColumn {
+	width: 225px;
+        float: right;
+}
+#rsvpBlock .innerLeftColumn { padding-left: 21px; }
+#rsvpBlock { background-color: #ddefd0; padding: 14px 0; }
+
+#supportBlock { width: 900px; clear: both; }
+.cardTypesWrap { margin: 0; padding: 0; }
+.cardTypesWrap li { 
+	float: left;
+	-moz-opacity: .20;
+	filter: alpha(opacity=20);
+	opacity: .20;
+	width: 62px; 
+	list-style-type: none;
+}
+#submitWrap { position: relative; top: 80px; } 
+#submitButtons { margin-top: 20px; }
+#btnOnlyRSVP { float: left; }
+#btnDonateRSVP { float: right; }
+
+/* Disabled styles */
+#reg_donForm .disabled, #reg_donForm .disabled label { color: #999; }
+div.disabled label { color: #999; }
+#reg_donForm .disabled a, #reg_donForm .disabled a:link, #reg_donForm .disabled a:visited, #reg_donForm .disabled a:hover, #reg_donForm .disabled a:active { color: #999; cursor: default; }
+div.disabled input { background-color: #999; }
+</style>
+
+<script src="https://[[S29:SECURE_DOMAIN]][[S29:SECURE_PATH]]/SPageServer?pagename=c2s_registration_scripts&pgwrap=n&team_id=[[S334:team_id]]"></script>
+
+<script type="text/javascript">
+var dataResp;
+var partyData = [];
+
+// parse team ID from URL param - ***NOTE*** need to remove/deal with the default before final!
+var myTeam = [[?x[[S334:team_id]]x::xx::1030::[[S334:team_id]]]];
+
+var myTimestamp = new Date().getTime();
+var dataPageURL = 'https://secure2.convio.net/cpc/c2s/c2s_party_data.xml?t='+myTimestamp;
+var cnvPageURL = [[T1:dataPageURL]];
+var teamPageUrl = 'AjaxProxy?auth=[[S86:true]]&cnv_url='+cnvPageURL;
+
+var myUrl = 'https://secure2.convio.net/cpc/site/CRTeamraiserAPI'; 
+var myData = 'method=getTeamsByInfo&api_key=cpcapis&v=1.0&fr_id=1061&response_format=xml&team_id='+myTeam;
+
+var thermoLevels = [0, 999, 2499, 4999, 9999, 14999, 19999, 24999, 49999];
+
+// AJAX call to get team info based on ID in URL param
+function getTeamData() {
+	$.post(myUrl, myData, function(data, textStatus, jqxhr){
+		console.log(data.responseText);
+		console.log(textStatus);
+		console.log(jqxhr);
+		respXml = jqxhr.responseText;
+		
+		var addrText = $(respXml).find('name').text();
+		var amount = $(respXml).find('amountRaised').text();
+		if (amount > 0) { 
+			amount = amount.slice(0, amount.length - 2); 
+		}
+		var thermoTag = 0;
+		for (var i = 0; i < 8; i++) {
+			if (amount > thermoLevels[i]) {
+				thermoTag = i+1;
+			}
+		}
+		var myThermo = 'https://secure2.convio.net/cpc/c2s/c2s_thermometer_ds_'+thermoTag.toString()+'.jpg';
+		
+		$("#teamName").text(addrText);
+		$("#thermoImg").html('<img class="thermo" src="'+ myThermo + '" />');
+		$("#dollarAmt").text('$'+amount);
+		//$("#teamPagePartyInfo").html('<div id="teamID">'+myTeam+'</div>');
+
+
+		$('#partyHelpText').hide();
+	  });
+}
+var tdata;
+// NEW AJAX call to get party info based on ID in URL param
+function getPartyData() {
+	$.ajax({
+		url: teamPageUrl,
+		headers:{
+			'X-Requested-With':'Foo'
+		},
+		success: function(data){
+			//console.log(data);
+			dataResp = data;
+			tdata= data;
+			//console.log(data.getElementsByTagName('party'));
+			
+			$(data).find('party').each(function(index) {
+				var myId = $(this).find('teamId').text();
+				if(myId == myTeam) {
+					partyData.push({
+						partyTime: $(this).find('partyTime').text(),
+						partyDetails: $(this).find('partyDetails').text(),
+						partyHosts: $(this).find('hostNames').text(),
+						partyCode: $(this).find('inviteCode').text(),
+						copyFlag: $(this).find('copyFlag').text()
+					});
+				}
+			})
+			var num = partyData.length;
+			if (num > 1) {
+				$("#numberParties").text(num+' parties are contributing to this total');
+			}
+			var skiplb = [[?x[[S334:skiplb]]x::xx::false::[[S334:skiplb]]]];
+			if ( skiplb == true || myTeam == 1087 ) { 
+				//alert('partysetup!');
+				setupParty(partyData[0]);
+			}
+		}
+	});
+}
+
+function setupParty(data) {
+	$("#specificTime").text(data.partyTime);
+	$("#specificHosts").text(data.partyHosts);
+	$("#specificDetails").html(data.partyDetails);
+	$("#teamPagePartyInfo").text(data.partyCode);
+	$('#sub_source').val('C2S13'+data.partyCode);
+	if (data.partyCode == '6VP2') {
+		$('#copyInsert').html('<p>Join the Conservancy in celebrating the beauty of Central Park in spring! Please RSVP below.</p><p>To show our support for the Central Park Conservancy, we will be making a $100 contribution for every attendee of our Central to Spring cocktail party. Please join us in this exciting celebration!</p><p>Additional donations are not required to attend, however we encourage you to help represent The San Remo residents as dedicated caretakers of Central Park.</p>');
+	}
+	if (data.partyCode == 'ZHTA') {
+		$('#copyInsert').html('<p>Join the Conservancy in celebrating the beauty of Central Park in spring! RSVP below and consider making a donation of at least $100.</p><p>Even if you are unable to attend the event you can select "Donation Only" in the RSVP Information section below and help represent the residents of The Mayfair Towers as dedicated caretakers of Central Park!</p>');
+	}
+	if (data.partyCode == 'YLMV') {
+		$('#copyInsert').html('<p>Join the Conservancy in celebrating the beauty of Central Park in spring! Please RSVP below and consider making a donation of $100 or more.</p><p>Donations are not required to attend, however we encourage you to join us as dedicated caretakers of Central Park.</p>');
+	}
+	$.ajax({url: window.location+'&s_myPartyTime='+data.partyTime+'&s_myPartyHosts='+data.partyHosts+'&s_myPartyDetails='+data.partyDetails.replace("<br />","*")});
+	success = 1;
+	lightbox.close();
+}
+
+function submitPwd(){
+	var inputPwd = $('#myPwd').val();
+	var success = 0;		
+	$.each(partyData, function(index) {
+		var thisPwd = this.partyCode;
+		//alert('this team = '+thisPwd+'; you entered '+inputPwd+' which in caps is '+inputPwd.toUpperCase());
+		if (inputPwd.toUpperCase() == thisPwd) {
+			setupParty(this);
+		}
+	})
+	if (success != 1) {
+		$('#partyHelpText').show();
+		//alert('try 123 or 456');
+		$('#myPwd').val('');
+		$('#myPwd').focus();
+	}
+}
+
+function clickableContainer(target) {
+	if (target.length) {
+		target.each(function() {
+			$(this).addClass('clickable');/*.click(function() {
+				var href = $(this).find('a').eq(0).attr('href');
+				window.location = href;
+			});*/
+		});
+	}
+}
+
+[[?[[S8]]::admin::::
+// initialize page
+var lightbox, lightbox2;
+$(document).ready(function() {
+	getTeamData();
+	getPartyData();
+
+	// FIRST LIGHTBOX SETUP CODE
+	// DO NOT CHANGE - this activates the lightbox
+	lightbox = $("#site_overlay").overlay({expose: {color: '#000',loadSpeed: 200,opacity: 0.8}, closeOnClick: false, api:true, closeOnEsc: false, onClose: function(){$('#passwordForm').remove();}}).load();
+
+	// lightbox button click function - correct value closes lightbox
+	$('#pwdButton').click(submitPwd);
+	$('#myPwd').keypress(function (e) {
+		if (e.which == 13) {
+			submitPwd();
+			return false;
+		}
+	})
+	.focus(function() {
+		if ($(this).val() == 'XXXX') {
+			$(this).val('');
+		}
+	})
+	.blur(function() {
+		if ($(this).val() == '') {
+			$(this).val('XXXX');
+		}
+	});
+
+	// second lightbox functionality
+	$('#btnOnlyRSVP').click(function() {
+		donateFlag = false;
+		lightbox2 = $("#site_overlay2").overlay({expose: {color: '#000',loadSpeed: 200,opacity: 0.8}, closeOnClick: true, api:true/*, onClose: function(){$('#passwordForm').remove();}*/}).load();
+		// once the objects have been created, run clickableContainer()
+		clickableContainer($('#noDonateButton a'));
+			return false;
+	});
+	$('#addDonationButton').click(function(){
+		lightbox2.close();
+			return false;
+	});
+	
+	$('#myPwd').focus();
+	
+});
+]]
+</script>
+
+<!-- Password lightbox  - ***NOTE*** needs to be styled yet -->
+<div id="site_overlay" class="apple_overlay black">
+	<!--div class="close"></div-->
+	<div id="passwordForm">
+		<div id="passwordText">
+			<h2>Please Enter Party Code</h2>
+			<p>To attend your hosts&#8217; Central to Spring cocktail party you will need to enter the unique event code provided on your invitation.</p>
+		</div>
+		<form>
+			<input type="text" id="myPwd" value="XXXX">
+			<input id="pwdButton" type="button" value="SUBMIT">
+			<input id="partyPwd" value="" type="hidden" />
+		</form>
+		<div id="partyHelpText">
+			<p>Need help? Email questions to <a href="mailto:jjacuzzi@centralparknyc.org">jjacuzzi@centralparknyc.org</a></p>
+		</div>
+	</div>
+</div>
+<!-- END Password lightbox -->
+
+<!-- WAIT lightbox  - ***NOTE*** needs to be styled yet -->
+<div id="site_overlay2" class="apple_overlay black">
+	<div class="close"></div>
+	<div id="waitForm">
+		<div id="waitText">
+			<h2>ARE YOU SURE?</h2>
+			<p>We are thrilled you will be celebrating the beauty of spring in Central Park with us on April 10! Won&#8217;t you please consider giving any amount you can to ensure that the Central Park Conservancy can continue maintaining the Park&#8217;s splendor for years to come?</p>
+		</div>
+		<input id="addDonationButton" type="button" value="Donate">
+		<p id="noDonateButton">or <a>RSVP Without Donating</a> </p>
+	</div>
+</div>
+<!-- END WAIT lightbox -->
+
+<div id="teamPagePartyInfo" style="display:none;"></div>
+
+<!-- the first div is probably unnecessary in production, as its function will be covered by the #contain div;
+	but we'll need to copy its CSS to that location... -->
+<div id="contentMain">
+
+<div id="upperContent">
+	<div id="upperLeft">
+		<div class="copy">
+			<h1><span id="teamName">14 East 60th Street</span></h1>
+			<h2>Wednesday, April 10, 2013 @ <span id="specificTime">6:30 - 8:00 pm</span></h2>
+			<h2>Fireworks display @ 7:45pm</h2>
+			<div id="copyInsert"><p>Join the Conservancy in celebrating the beauty of Central Park in spring! Please RSVP below and consider making a donation of $100 or more.</p>
+			<p>Donations are not required to attend, however we encourage you to help represent our building as dedicated caretakers of Central Park.</p></div>
+		</div>
+		<div id="specificPartyInfo">
+			<div class="specificRow"><span class="specificColumn"><h3>Host(s):</h3></span><div id="specificHosts">Somebody</div></div>
+			<div class="specificRow"><span class="specificColumn"><h3>Details:</h3></span><div id="specificDetails">Somewhere in your building</div></div>
+		</div>
+	</div> <!-- close upperLeft -->
+	<div class="thermoBlock">
+		<div id="amtRaisedImg">
+			<img src="https://secure2.convio.net/cpc/c2s/c2s_amtRaised_bkgd_v2_04.jpg" />
+			<span id="dollarAmt">$1,000</span>
+			<span id="numberParties"></span>
+		</div>
+		<div id="thermoImg">
+			<img class="thermo" src="https://secure2.convio.net/cpc/c2s/c2s_thermometer_ds_0.jpg" />
+		</div>
+		<div id="trophyLink">
+			<a href="http://www.centralparknyc.org/central-to-spring/participants-per-building.html"><img src="https://secure2.convio.net/cpc/c2s/neighbors_v2.jpg" /></a>
+		</div>
+	</div> <!-- close thermoBlock -->
+</div> <!-- close upperContent -->
+<div class="horizDivider"></div>
+<div id="lowerContent" class="clearfix">
+
+	<!-- NOTE: form copied from older donation form; will need adjustments for XML formatting and registration processing -->
+	<form id="reg_donForm" name="reg_donForm" action="https://secure2.convio.net/cpc/site/CRTeamraiserAPI" method="post">
+		<input type="hidden" value="processRegistration" name="method"/>
+		<input type="hidden" value="1.0" name="v"/>
+		<input type="hidden" value="cpcapis" name="api_key"/>
+		<noscript>
+		<p class="hint">You must have JavaScript enabled for this registration form to work properly.</p>
+		<input type="hidden" name="success_redirect" value="https://secure2.convio.net/cpc/site//SPageServer?pagename=c2s_registration_thanks"/>
+		<input type="hidden" name="error_redirect" value="https://secure2.convio.net/cpc/site//SPageServer?pagename=c2s_registration_error"/>
+		</noscript>
+		<input type="hidden" name="suppress_response_codes" value="false"/>
+		<input type="hidden" name="validate" value="true"/>
+		<input type="hidden" name="remember_me" value="true"/>
+		<input type="hidden" name="source" id="source" value="C2S13"/>
+		<input type="hidden" name="sub_source" id="sub_source" value="C2S13"/>
+		<input type="hidden" name="suppress_registration_autoresponders" value="false"/>
+		<!--input type="hidden" name="response_format" value="json"/-->
+		<!--input type="hidden" name="df_preview" value="true"/-->
+		<div id="formUpper">
+			<div class="formLeftColumn">
+				<div class="headingBar clrfix">
+					<h1>Your Information</h1>
+				</div>
+				<div class="innerLeftColumn clrfix">
+					<div class="dp clrfix">
+						<label for="billingNameFirst">First Name:</label>
+					</div>
+					<div class="dp clrfix">
+						<label for="billingNameLast">Last Name:</label>
+					</div>
+					<div class="dp clrfix">
+						<label for="billingAddressStreet1">Street Address 1:</label>
+					</div>
+					<div class="dp clrfix">
+						<label for="billingAddressStreet2">Street Address 2:</label>
+					</div>
+					<div class="dp clrfix">
+						<label for="billingAddressCity">City:</label>
+					</div>
+					<div class="dp clrfix">
+							<label for="billingAddressState">State:</label>
+					</div>
+					<div class="dp clrfix">
+						<label for="billingAddressZip">Zip Code:</label>
+					</div>
+					<div class="dp clrfix">	
+						<label for="donorEmail">Email:</label>
+					</div>
+					<div class="dp clrfix">
+						<label for="emailOptIn">Yes, I would like to receive<br />e-mail from the Conservancy.</label>
+					</div>
+				</div>
+				<div class="innerRightColumn clrfix">
+					<div class="dp clrfix">
+						<input id="billingNameFirst" name="billing.name.first" value="" type="text" />
+					</div>
+					<div class="dp clrfix">
+						<input id="billingNameLast" name="billing.name.last" value="" type="text" />
+					</div>
+					<div class="dp clrfix">
+						<input id="billingAddressStreet1" name="billing.address.street1" value="" type="text" />
+					</div>
+					<div class="dp clrfix">
+						<input id="billingAddressStreet2" name="billing.address.street2" value="" type="text" />
+					</div>
+					<div class="dp clrfix">
+						<input id="billingAddressCity" name="billing.address.city" value="" type="text" />
+					</div>
+					<div class="dp clrfix">								
+							<select id="billingAddressState" name="billing.address.state">
+								<option value="" selected="selected">- Select -</option>
+								<option value="AK">Alaska</option><option value="AL">Alabama</option><option value="AR">Arkansas</option>
+								<option value="AZ">Arizona</option><option value="CA">California</option><option value="CO">Colorado</option>
+								<option value="CT">Connecticut</option><option value="DC">District of Columbia</option><option value="DE">Delaware</option>
+								<option value="FL">Florida</option><option value="GA">Georgia</option><option value="HI">Hawaii</option>
+								<option value="IA">Iowa</option><option value="ID">Idaho</option><option value="IL">Illinois</option>
+								<option value="IN">Indiana</option><option value="KS">Kansas</option><option value="KY">Kentucky</option>
+								<option value="LA">Louisiana</option><option value="MA">Massachusetts</option><option value="MD">Maryland</option>
+								<option value="ME">Maine</option><option value="MI">Michigan</option><option value="MN">Minnesota</option>
+								<option value="MO">Missouri</option><option value="MS">Mississippi</option><option value="MT">Montana</option>
+								<option value="NC">North Carolina</option><option value="ND">North Dakota</option><option value="NE">Nebraska</option>
+								<option value="NH">New Hampshire</option><option value="NJ">New Jersey</option><option value="NM">New Mexico</option>
+								<option value="NV">Nevada</option><option value="NY" selected="selected">New York</option><option value="OH">Ohio</option>
+								<option value="OK">Oklahoma</option><option value="OR">Oregon</option><option value="PA">Pennsylvania</option>
+								<option value="RI">Rhode Island</option><option value="SC">South Carolina</option><option value="SD">South Dakota</option>
+								<option value="TN">Tennessee</option><option value="TX">Texas</option><option value="UT">Utah</option>
+								<option value="VA">Virginia</option><option value="VT">Vermont</option><option value="WA">Washington</option>
+								<option value="WI">Wisconsin</option><option value="WV">West Virginia</option><option value="WY">Wyoming</option>
+								<option value="AS">American Samoa</option><option value="FM">Fed. St. of Micronesia</option><option value="GU">Guam</option>
+								<option value="MH">Marshall Islands</option><option value="MP">Northern Mariana</option><option value="PR">Puerto Rico</option>
+								<option value="PW">Palau</option><option value="VI">Virgin Islands</option><option value="AA">Armed Forces Americas</option>
+								<option value="AE">Armed Forces</option><option value="AP">Armed Forces Pacific</option><option value="AB">Alberta</option>
+								<option value="BC">British Columbia</option><option value="MB">Manitoba</option><option value="NB">New Brunswick</option>
+								<option value="NL">Newfoundland &amp; Labra.</option><option value="NS">Nova Scotia</option><option value="NT">Northwest Terr.</option>
+								<option value="NU">Nunavut</option><option value="ON">Ontario</option><option value="PE">Prince Edward Island</option>
+								<option value="QC">Quebec</option><option value="SK">Saskatchewan</option><option value="YT">Yukon</option><option value="None">None</option>
+							</select>
+					</div>
+					<div class="dp clrfix">
+						<input id="billingAddressZip" name="billing.address.zip" value=""/>
+					</div>
+					<div class="dp clrfix">
+						<input id="donorEmail" name="donor.email" value="" type="text" />
+					</div>
+					<div class="dp clrfix">
+						<input id="emailOptIn" name="donor.email_opt_in" type="checkbox" checked="checked" value="true" />
+					</div>
+				</div>
+			</div>
+			<div class="formRightColumn">
+				<div class="headingBar clrfix">
+					<h1>RSVP Information</h1>
+				</div>
+				<div id="rsvpBlock" class="clrfix">
+					<div class="innerLeftColumn clrfix">
+						<div class="dp clrfix">	
+							<label for="numberAttending">Number Attending:</label>
+						</div>
+						<div class="dp disabled clrfix guest">	
+								<label for="guestNameFirst">*Guest First Name:</label>
+						</div>
+						<div class="dp disabled clrfix guest">	
+								<label for="guestNameLast">*Guest Last Name:</label>
+						</div>
+						<div class="dp disabled clrfix guest">	
+							<label for="guestEmail">*Guest Email:</label>
+						</div>
+						<br /><span style="font-size:10px;"><i>*optional</i></span>
+					</div>
+					<div class="innerRightColumn clrfix">
+						<div class="dp clrfix">	
+							<select id="numberAttending" name="number.attending">
+								<option value="1">0 : Donation Only</option>
+								<option value="1" selected="selected">1 : Single RSVP</option>
+								<option value="2">2 : RSVP + 1 Guest</option>
+							</select>
+						</div>
+						<div class="dp disabled clrfix guest">	
+								<input id="guestNameFirst" name="guest.name.first" value="" type="text" disabled="disabled"  />
+						</div>
+						<div class="dp disabled clrfix guest">	
+								<input id="guestNameLast" name="guest.name.last" value="" type="text" disabled="disabled" />
+						</div>
+						<div class="dp disabled clrfix guest">	
+							<input id="guestEmail" name="guest.email" value="" type="text" disabled="disabled" />
+						</div>
+					</div>
+					</div>
+			</div>
+		</div>
+		<div id="supportBlock">
+			<h1>Support the Central Park Conservancy</h1>
+			<p>Donations are not required to attend, however we encourage you make a donation to this spectacular event, as dedicated caretakers of Central Park.Your contribution will help the Conservancy raise 85% of this year&#8217;s $45.8 million budget.</p>
+		</div>
+		<div id="formLower">
+			<div class="formLeftColumn">
+				<div class="innerLeftColumn clrfix">
+					<div class="dp clrfix">
+						<label for="donationAmount">Donation Amount:</label>
+					</div>
+					<div class="dp clrfix">
+						<label for="cardNumber">Credit Card Number:</label>
+					</div>
+					<div class="dp clrfix">
+						<label for="cardExpDateMonth">Expiration Date:</label>
+					</div>
+					<div class="dp clrfix">
+						<label for="cardExpDateYear">Expiration Date:</label>
+					</div>
+					<div class="dp clrfix">
+						<label for="cardCVV">CVV Number:<a href="http://help.convio.net/site/PageServer?s_site=cufi&amp;pagename=user_donation_cvv" class="HelpLink" title="What is this? Opens new window.">What is this?</a></label>
+					</div>
+				</div>
+				<div class="innerRightColumn clrfix">
+					<div class="dp clrfix">
+						<input id="donationAmount" name="other_amount" value="$100" autocomplete="off" type="int" />
+					</div>
+					<div class="dp clrfix">
+						<input id="cardNumber" name="card_number" value="" autocomplete="off" type="text" />
+					</div>
+					<div class="dp special clrfix">
+						<select id="cardExpDateMonth" name="card_exp_date_month">
+							<option value="">Please Select</option>
+							<option value="01">01</option>
+							<option value="02">02</option>
+							<option value="03">03</option>
+							<option value="04">04</option>
+							<option value="05">05</option>
+							<option value="06">06</option>
+							<option value="07">07</option>
+							<option value="08">08</option>
+							<option value="09">09</option>
+							<option value="10">10</option>
+							<option value="11">11</option>
+							<option value="12">12</option>
+						</select>
+					</div>
+					<div class="dp special clrfix">
+						<select id="cardExpDateYear" name="card_exp_date_year">
+							<option value="">Please Select</option>
+							<!-- Use S550 to get YYYY from present to +10 years -->
+							<option value="2013" >2013</option>
+							<option value="2014" >2014</option>
+							<option value="2015" >2015</option>
+							<option value="2016" >2016</option>
+							<option value="2017" >2017</option>
+							<option value="2018" >2018</option>
+							<option value="2019" >2019</option>
+							<option value="2020" >2020</option>
+							<option value="2021" >2021</option>
+							<option value="2022" >2022</option>
+							<option value="2023" >2023</option>
+						</select>
+					</div>
+					<div class="dp clrfix">
+						<input id="cardCVV" name="card_cvv" value="" autocomplete="off" type="text" />
+					</div>
+					<div class="dp clrfix">
+						<ul class="cardTypesWrap clrfix">
+							<li id="visa_logo"><img src="../images/content/pagebuilder/visa_logo.jpg" alt="Visa"/></li>
+							<li id="mc_logo"><img src="../images/content/pagebuilder/mc_logo.jpg" alt="Mastercard"/></li>
+							<li id="amx_logo"><img src="../images/content/pagebuilder/amx_logo.jpg" alt="AMEX"/></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="formRightColumn">
+				<div id="submitWrap" class="dp clrfix">
+					<label id="ccApiErrors" class="preError"><i>Please review your information, then click the appropriate button.</i></label>
+	            	<div id="errorMessage" class="error"></div>
+					<div id="submitButtons">
+						<input type="image" id="btnOnlyRSVP" src="https://secure2.convio.net/cpc/c2s/rsvp_without_button_v2.jpg" />
+						<input type="image" id="btnDonateRSVP" src="https://secure2.convio.net/cpc/c2s/rsvp_with_button_v2.jpg">
+					</div>
+					<!--button type="submit" id="btnSubmit">Submit and Process</button-->
+				</div>
+			</div>
+		</div>                        
+	</form>
+</div> <!-- close #lowerContent -->
+<style>
+#memLoader { display: none; height: 100px; position: absolute; width: 300px; background: #000; }
+#memLoader img { position: relative; left: 46px; top: 43.5px; }
+#sb-body, #sb-loading {
+	background-color: #fff;
+}
+</style>
+<div id="memLoader"><img src="../images/content/pagebuilder/loadingAnimation.gif"/></div>
+
+</div> <!-- close #contentMain -->

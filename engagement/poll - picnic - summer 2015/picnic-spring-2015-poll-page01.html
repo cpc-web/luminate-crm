@@ -1,0 +1,242 @@
+<!-- Pick Your Picnic Final Version Page01 -->
+<!-- secure image edits -->
+<!DOCTYPE html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="iso-8859-1" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <meta name="Robots" content="index, follow" />
+  <meta property="og:url" content="https://secure2.convio.net/cpc/site/SPageNavigator/pick_your_favorite_picnic_page01.html?s_subsrc=2015_picnic_poll&utm_medium=social&s_src=facebook&utm_source=facebook&utm_campaign=2015_picnic_poll" />
+  <meta property="og:title" content="Pick your perfect picnic--and win" />
+  <meta property="og:description" content="Looking for your perfect picnic spot in Central Park? Take our quiz for a recommendation and be entered to win two sweet passes to Evening in the Garden!!!" />
+  <meta property="og:image" content="https://secure2.convio.net/cpc/images/content/pagebuilder/central-park-picnic-og.jpg" />
+  <!-- Bootstrap core CSS + Template Stylesheet -->
+
+  <link href="https://cloud.webtype.com/css/2ebe6d20-6380-420e-a3c8-7a19f4a641e2.css" rel="stylesheet" type="text/css" />
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link href="https://secure2.convio.net/cpc/redesign/css/bootstrap-303-min.css" rel="stylesheet" />
+  <link href="poll-template-css.css" rel="stylesheet" />
+
+  <!-- Bootstrap core JavaScript
+  ================================================== -->
+  <!-- Place in-page JS at the end of the document so the pages load faster -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+  <script type='text/javascript' src="https://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+  <script type='text/javascript' src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.7.1/modernizr.min.js"></script>
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-17339074-1', 'auto');
+    ga('send', 'pageview');
+  </script>
+</head>
+<style>
+.fa {
+font-size: 15px;
+margin-right: 5px;
+float: none;
+}
+</style>
+<body ng-app="PicnicApp" ng-controller="picnicPollController">
+  <div class="row myWhiteBackground">
+    <div class="col-xs-12 ">
+      <div id="logo"></div>
+    </div>
+  </div>  
+  <div style="display:none;">
+    <img src="https://secure2.convio.net/cpc/images/content/pagebuilder/central-park-picnic-og.jpg" />
+  </div>
+  <div class="row maincentered">
+    <div class="myPadding"></div>
+  </div>
+  <div class="container">
+    <div class="row myRow" ng-hide="isMobile && pick">
+      <div class="myTopContent" >
+        <div class="col-xs-12 myContent">
+          <p class="secondaryUpperText"><strong>Choose your favorite picnic spread and you could win a picnic basket from the JW Marriott Essex House!</strong>.</p>
+        </div>
+        <div class-"col-xs-12">
+          <p class="hidden-xs hidden-sm">
+            Host your picnic in style with this delicious picnic basket packed with all of the essentials. Basket includes finger sandwiches, cheese, fruit, sparkling beverages and other snacks prepared by the culinary team of SOUTHGATE, the hotel’s restaurant situated on Central Park South.
+          </p>
+          <p>
+            <strong>
+              Plus, after you cast your vote in our poll, we'll tell you the best place in Central Park to have your perfect picnic!
+            </strong>
+          </p>
+        </div>
+      </div>
+    </div>  
+    <div class="row myRow pickPicnic" ng-show="isDesktop || isTablet">
+      <p >
+        <span>Pick the picnic you like most and enter your info to win:</span>
+      </p> 
+    </div>
+    <div class="row pickPicnic" ng-show="isMobile && !pick">  
+      <p >
+        <div>Click the picnic you like most:</div>
+       </p> 
+    </div>
+    <div class="row myrow">
+      <div class="col-xs-12 myPollContent">
+        <div class="col-sm-12 col-md-8">
+          <div ng-repeat="p in picks">
+            <div class="col-sm-12 myNumber myNumberNotPicked clickable" ng-click="vote(p.pick)"
+                ng-show="!isMobile || !pick || pick == p.pick">
+              <p><img ng-src="https://secure2.convio.net/cpc/images/{{ p.image }}" class="img-responsive"></p>
+              <p>{{ p.description }}</p>
+              <button class="btn">
+                <i class="fa fa-square-o"></i><i class="fa fa-check-square-o"></i>&nbsp;&nbsp;{{ p.title }}
+              </button>
+            </div>  
+          </div>
+        </div>  
+        <div class="col-sm-12 col-md-4 mySubmission" ng-show="!isMobile || pick">
+          <div class="myInfo">
+            <p>Enter your info to win:</p>
+          </div>
+          <!-- https://secure2.convio.net/cpc/site/SSurvey -->
+          <form name="form" action="https://secure2.convio.net/cpc/site/SSurvey" method="post">
+
+            <input name="cons_info_component" type="hidden" value="t">
+            <input name="s_rememberMe" type="hidden" value="on">
+            <input name="remember_me_opt_in_requested" type="hidden" value="true">
+            <input name="1872_5440_2_6605" type="hidden" value="NOREPLY">
+            <input name="1872_5440_3_6602" type="hidden" value="">
+            <input name="1872_5440_4_6603" type="hidden" value="">
+            <input name="s_src" type="hidden" value="" />
+            <input name="s_subsrc" type="hidden" value="" /> 
+            <input name="denySubmit" type="hidden">
+
+            <input id="SURVEY_ID" name="SURVEY_ID" type="hidden" value="5620" />
+            <input id="ERRORURL" name="ERRORURL" type="hidden"
+                value="https://secure2.convio.net/cpc/site/SPageNavigator/pick_your_favorite_picnic_page01.html" />
+            <input id="NEXTURL" name="NEXTURL" type="hidden" value="" />
+
+            <input class="text" type="text" name="cons_first_name" type="text" maxlength="50" placeholder="* First Name"
+                ng-model="user.firstName" required="" />
+            <div class="error" ng-show="submitted || form.cons_first_name.$touched">
+              <div ng-show="form.cons_first_name.$error.required">Tell us your first name.</div>
+            </div>
+
+            <input class="text" type="text" name="cons_last_name" type="text" maxlength="50" placeholder="* Last Name"
+                ng-model="user.lastName" required="" />
+            <div class="error" ng-show="submitted || form.cons_last_name.$touched">
+              <div ng-show="form.cons_last_name.$error.required">
+                Tell us your last name.
+              </div>
+            </div>
+
+            <input class="text" type="email" name="cons_email" maxlength="100" placeholder="* Email" 
+                ng-model="user.email" required="" />
+            <div class="error" ng-show="submitted || form.cons_email.$touched">
+              <span ng-show="form.cons_email.$error.required">Tell us your email.</span>
+              <span ng-show="form.cons_email.$error.email">This is not a valid email.</span>
+            </div>
+
+            <input class="text" type="text" name="cons_zip_code" maxlength="11" placeholder="* ZIP code"
+                ng-model="user.zipcode" required=""/>
+            <div class="error" ng-show="submitted || form.cons_zip_code.$touched">
+              <span ng-show="form.cons_zip_code.$error.required">Tell us your zipcode.</span>
+            </div>
+
+            <input name="ACTION_SUBMIT_SURVEY_RESPONSE" type="hidden" value="SUBMIT" />
+            <input id="btnSubmit" type="submit" value="SUBMIT" ng-click="update(form)" />
+            <div class="error" ng-show="submitted && !pick">
+              Click on one of the boxes to cast your vote!
+            </div>
+            <div class="small-message">
+              <p>
+                By submitting your vote, you will join our online community and receive periodic updates from Central Park Conservancy. You can unsubscribe at any time.
+              </p>
+            </div>    
+          </form>
+        </div>  
+      </div> <!-- END XS-12 -->
+    </div> <!-- end ROW -->
+  </div>    
+</body>
+<script>
+
+//Sets screen size type basd on the screen width
+//The widths should match bootstrap responsive classes
+
+
+var app = angular.module('PicnicApp', []);
+
+app.controller('picnicPollController', function($scope, $timeout) {
+  var resize = function() {
+    var width = $(window).width();
+    $scope.isMobile = width <= 767;
+    $scope.isTablet = width > 767 && width <= 991;
+    $scope.isDesktop = width > 991;
+    $scope.$apply();
+  }
+
+  $timeout(resize, 1);
+  $(window).resize(resize);
+
+  $scope.picks = [{
+    pick: 'homecooked',
+    title: 'HOMECOOKED LOVE',
+    description: 'A feast I bring that was cooked up at home with lots of tender love and care.',
+    image: 'picnic_icons-02.png'
+  }, {
+    pick: 'cheese',
+    title: 'CHEESE AND BUBBLES',
+    description: 'I like to class it up with sparkling soda, cheese, maybe some charcuterie.',
+    image: 'picnic_icons-03.png'
+  }, {
+    pick: 'iphone',
+    title: 'DELIVERY',
+    description: 'The New York Classic: whipping out my phone and ordering delivery.',
+    image: 'picnic_icons-04.png'
+  }, {
+    pick: 'sweets',
+    title: 'SWEET TREATS',
+    description: 'I let my sweet tooth sing and pack up pastries, cakes, and cookies!',
+    image: 'picnic_icons-01.png'
+  }];
+
+  $scope.vote = function(pick) {
+    $timeout(function() {
+      $scope.pick = pick;
+    }, 200);
+  };
+
+  $scope.update = function(form) {
+    $scope.submitted = true;
+    if (form.$valid && $scope.pick) {
+      var nextUrl = 'https://secure2.convio.net/cpc/site/SPageNavigator/pick_your_favorite_picnic_page02.html';
+      $('#NEXTURL').val(nextUrl + '?x=' + $scope.pick);
+        ga('send', 'event', 'Quiz: Pick Your Picnic', 'Submit', 'Successful Submission', $scope.pick);
+      document.getElementsByName(form.$name)[0].submit();
+    }
+  };
+});
+
+$(function() {  
+  // Prevent form submit due to action attribute being present.
+  $("form[name='form']").on("submit", function (e) {
+    e.preventDefault();
+  });
+
+  // Interaction on selected box.
+  $( ".myNumber" ).on( "click", function() {
+    $(".myNumber").removeClass("myNumberPicked");
+    $(".myNumber").addClass("myNumberNotPicked");
+    $(".myNumber").find(".fa-check-square-o").css("display", "none");
+    $(".myNumber").find(".fa-square-o").css("display", "inline");
+    $(this).removeClass("myNumberNotPicked");
+    $(this).addClass("myNumberPicked");
+    $(this).find('.fa').toggle();
+  });
+});
+
+</script>
+</html>

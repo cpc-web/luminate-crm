@@ -1,0 +1,60 @@
+<div id="numParents" style="display: none;">[[S1:custom_number1]]</div>
+<div id="numChildren" style="display: none;">[[S1:custom_number2]]</div>
+<script type="text/javascript">
+//(function($){
+	//$(function() {
+		var numParents = document.getElementById("numParents").innerHTML; //$('#numParents').text(); // 
+		var numChildren = document.getElementById("numChildren").innerHTML; //$('#numChildren').text(); //
+		if(numParents < 2) { 
+			// $('#1872_5421_2_6522').parent().parent().parent().hide();
+			document.getElementById("1872_5421_2_6522").parentNode.parentNode.parentNode.style.display = "none";
+		}
+		if(numChildren < 2) { 
+			//$('#1872_5421_5_6523').parent().parent().parent().hide();
+			document.getElementById("1872_5421_5_6523").parentNode.parentNode.parentNode.style.display = "none";
+			//$('#1872_5421_6_6526').parent().parent().parent().hide();
+			document.getElementById("1872_5421_6_6526").parentNode.parentNode.parentNode.style.display = "none";
+		}
+		if(numChildren < 3) { 
+			//$('#1872_5421_7_6524').parent().parent().parent().hide();
+			document.getElementById("1872_5421_7_6524").parentNode.parentNode.parentNode.style.display = "none";
+			//$('#1872_5421_8_6527').parent().parent().parent().hide();
+			document.getElementById("1872_5421_8_6527").parentNode.parentNode.parentNode.style.display = "none";
+		}
+		if(numChildren < 4) { 
+			//$('#1872_5421_9_6525').parent().parent().parent().hide();
+			document.getElementById("1872_5421_9_6525").parentNode.parentNode.parentNode.style.display = "none";
+			//$('#1872_5421_10_6528').parent().parent().parent().hide();
+			document.getElementById("1872_5421_10_6528").parentNode.parentNode.parentNode.style.display = "none";
+		}
+	//});
+//})(jQuery);
+</script>
+
+
+
+
+
+<div id="numParents">[[S1:custom_number1]]</div>
+<div id="numChildren">[[S1:custom_number2]]</div>
+<script type="text/javascript">
+(function($){
+	$(function() {
+		var numParents = $('#numParents').text();
+		var numChildren = $('#numChildren').text();
+		if(numParents < 2) { $('#1872_5421_2_6522').parent().parent().parent().hide(); }
+		if(numChildren < 2) { 
+			$('#1872_5421_5_6523').parent().parent().parent().hide();
+			$('#1872_5421_6_6526').parent().parent().parent().hide(); 
+		}
+		if(numChildren < 3) { 
+			$('#1872_5421_7_6524').parent().parent().parent().hide();
+			$('#1872_5421_8_6527').parent().parent().parent().hide(); 
+		}
+		if(numChildren < 4) { 
+			$('#1872_5421_9_6525').parent().parent().parent().hide();
+			$('#1872_5421_10_6528').parent().parent().parent().hide(); 
+		}
+	});
+})(jQuery);
+</script>

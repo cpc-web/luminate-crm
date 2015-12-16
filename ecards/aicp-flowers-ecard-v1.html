@@ -1,0 +1,50 @@
+<p><b>Generously Provided by:</b></p>
+<img width="328" height="90" src="https://secure2.convio.net/cpc/images/content/pagebuilder/NorthernTrust_125yrs_Logo_656x180.jpg" />
+<p><b>Give the gift of daffodils or tulips!</b></p>
+<p>Each year, thousands of daffodils and tulips are planted in the spring to enhance the beauty of Central Park.  Thanks to our event sponsor Northern Trust, attendees at Autumn in Central Park on November 12, 2014 can give the gift of daffodils or tulips to honor a loved one.</p>
+<p>In an effort to be a greener organization, <b>we will send a card via email to the recipient</b> with your personalized note notifying them of the gift. If you wish to send a physical card instead, please call 212.310.6668</p>
+<p><b>Please Note:</b> Locations for plantings cannot be specified, and no plaques will be placed in the Park.</p>
+</p>
+<div class="promoSection">
+<p>To send your ecard, please enter the promotion code found in your program into the box below. <span style="color: #FF0000;">Please enter promotion code before completing the rest of the form.</span></p>
+<input id="promoCode" style="float: left;" type="text" />
+<div id="submitPromo" class="btnDonate35 clickable" style="float: left; padding: 0 25px !important; margin-left: 10px;">Submit</div>
+&nbsp;<span class="promoError" style="display: none; color: #ff0000;">Incorrect Promo Code</span>
+</div>
+<script type="text/javascript">// <![CDATA[
+(function($){
+$(function() {
+
+$('.Button').hide();
+$('.NetscapeFix .Hint').html('(Note: We respect your privacy and do not send unsolicited email to the addresses you enter. For further information, see our <a href="http://www.centralparknyc.org/about/about-cpc/privacy-policy.html" target="_blank">Privacy Policy</a>.)');
+$('#InputForm input').prop('disabled', true);
+$('#InputForm textarea').prop('disabled', true);
+$('#promoCode').prop('disabled', false);
+$('#taf_popup_preview').remove();
+$('#sendtoemail').attr('rows', '1');
+
+$('#submitPromo').click(function() {
+var myCode = $('#promoCode').val().toUpperCase();
+if (myCode == 'NT14AICPFLOW') {
+$('.Button').show();
+$('.promoSection').hide();
+$('#InputForm input').prop('disabled', false);
+$('#InputForm textarea').prop('disabled', false);
+
+} else {
+$('.promoError').show();
+}
+});
+
+$("#promoCode").keypress(function (e) {
+if ((e.which && e.which == 13) || (e.keyCode && e.keyCode == 13)) {
+$('#submitPromo').click();
+return false;
+} else {
+return true;
+}
+});
+
+});
+})(jQuery);
+// ]]></script>

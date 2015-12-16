@@ -1,0 +1,767 @@
+a, a:link, a:visited {
+text-decoration: none;
+color: #77BD42;
+outline: medium none !important;
+font-family: "Titling Gothic FB Narr",sans-serif;
+padding-bottom: 0px;
+}
+
+.allMyNumbers {
+margin: 0 auto;
+text-align: center; 
+}
+
+.billing input[type=text], .billing label, .payment input[type=number], .payment label {
+display: block;
+}
+
+.billing input[type=text], .billing select, .billing input[type=email], .billing input[type=number]{
+width: 100%;
+}
+
+.billing input[type=text], .billing select, .billing label, input[type=email], input[type=number]{
+margin-bottom: 5px;
+}
+
+body {
+margin: 0 ; 
+padding: 0;
+width: 100%;
+font-family: "Titling Gothic FB Narr", sans-serif;
+font-size: 16px;
+background: url("https://secure2.convio.net/cpc/images/grass-mobile.jpg");
+margin-bottom:30px;
+}
+
+.btn {    
+padding: 6px 12px;
+margin-bottom: 0px;
+font-size: 16px;
+line-height: 26px;
+font-family: #A52A2A;
+font-weight: 700;
+text-transform: uppercase;
+color: white;
+background: none repeat scroll 0% 0% #68b247;
+/*border: 2px solid #333; */
+cursor: pointer;
+text-align: center;
+vertical-align: middle;
+width: 90%;
+box-shadow: 0px 1px 0px #666;
+}
+
+.btn:hover, .btn:focus {
+color: white;
+/* text-decoration: none; */
+outline: none;
+}
+
+.btn-next-outter {
+text-align: center;
+}
+
+#btnSubmit {
+background: none repeat scroll 0px 0px #FFA600;
+border: medium none;
+border-radius: 3px;
+box-shadow: 0px 1px 0px #666 !important;
+color: #FFF;
+display: block;
+font-size: 18px;
+font-weight: bold;
+height: 40px;
+width: 100%;
+}
+
+#cardNumber{
+width: 100%;
+}
+
+#cardCVV{
+width: 40%;
+}
+
+.cardTypesWrap{
+margin-bottom: 20px;
+}
+
+.cardTypesWrap li{
+float: left;
+margin-right: 5px;
+}
+
+.centered {
+margin: 0 auto;
+text-align: center; 
+}
+
+.checkbox {
+display:none;
+}
+
+.clickable {
+cursor: pointer;  
+}
+
+.error {
+font-size: 0.75em;
+color: #fa6223;
+position: relative;
+top: -15px;
+left: 17px;
+}
+
+.fa {
+font-size: 30px;
+float: left;
+color: white;
+padding: 5px;
+line-height: 1.2;
+}
+
+.fa-check-square-o {  
+font-size: 20px;  
+display:none;
+-webkit-transition: all 444000ms cubic-bezier(0.250, 0.250, 0.750, 0.750); 
+   -moz-transition: all 444000ms cubic-bezier(0.250, 0.250, 0.750, 0.750); 
+     -o-transition: all 444000ms cubic-bezier(0.250, 0.250, 0.750, 0.750); 
+        transition: all 444000ms cubic-bezier(0.250, 0.250, 0.750, 0.750); /* linear */
+           
+}
+
+.fa-square-o {
+display:inline-block;
+-webkit-transition: all 444000ms cubic-bezier(0.250, 0.250, 0.750, 0.750); 
+   -moz-transition: all 444000ms cubic-bezier(0.250, 0.250, 0.750, 0.750); 
+     -o-transition: all 444000ms cubic-bezier(0.250, 0.250, 0.750, 0.750); 
+        transition: all 444000ms cubic-bezier(0.250, 0.250, 0.750, 0.750); /* linear */
+            
+}
+
+.facebookShare {
+background-color: #405d9a;  
+opacity: 9;
+margin-bottom: 10px;
+box-shadow: 0px 3px 0px black;
+}
+
+.facebookShare:hover {
+opacity: .7;  
+}
+
+.group:after {
+content: "";
+display: table;
+clear: both;
+}
+
+h1, h2, h3 {
+margin:0; 
+font-family: "Titling Gothic FB Cond";
+}
+
+.img-responsive {
+margin: 0 auto; 
+padding: 10px 0;
+}
+
+ input {
+width: 100%;
+margin-bottom: 20px;
+color: #636466;
+padding-left: 5;
+font-size: 12px;
+height: 35px;
+box-shadow: none !important;
+}
+
+.myPollContent, input[type=email] {
+margin-bottom: 20px;  
+}
+
+input[type="checkbox"] {
+width:25px;
+text-align: right;  
+height: 20px;
+}
+
+label{
+white-space: normal;
+}
+
+label[for="level_id"]{
+position: absolute;
+right: 20px;
+bottom: 20px;
+}
+
+.leftHead{
+background: #69b247;
+color: #fff;
+font-weight: bold;
+padding: 5px;
+font-size: 20px;
+}
+
+.level{
+display: inline-block;
+background: #fff;
+color: #000;
+font-weight: bold;
+border-radius: 5px;
+width: 87px;
+padding: 10px;
+text-align: center;
+vertical-align: middle;
+margin: 0 20px 20px 0;
+box-shadow: 0px 1px 0px #666;
+}
+
+.level:hover{
+cursor: pointer;
+}
+
+.level_selected{
+background: #69b247;
+}
+
+.level input, #level_id_6{
+position: absolute;
+left: -99999999px;
+}
+
+.levels {
+float: left;
+width: 85%;
+padding-left: 20px;
+padding-bottom: 20px;
+padding-right: 20px;
+margin: 20px 60px;
+position: relative;
+}
+
+#logo {
+background-image: url("https://secure2.convio.net/cpc/images/35logo-74h.jpg");
+width: 195px;
+height: 67px;
+background-color: white;
+margin-bottom: 5px;
+}
+
+.maincentered {
+/*color: #68B247;*/
+margin: 0px auto;
+font-family: "Titling Gothic FB Narr",sans-serif;
+font-size: 19px;
+text-align: center;
+text-transform: uppercase;
+/*background-color: rgba(255, 255, 255, 1); */
+color: white;
+background: none repeat scroll 0% 0% rgba(119, 193, 67, 0.8);
+text-shadow: 1px 1px #636466;
+border-radius: 0px 0px 3px 3px; 
+}
+
+.make-selection {
+text-align: center;
+padding: 0px;
+font-size: 14px;
+text-transform: italic;  
+}
+
+#memLoader{
+display: none;
+}
+
+.mobileTitle {
+display: none;  
+}
+
+.myAnswer {
+margin: 10px auto;
+}
+
+.myAsk {
+font-weight: 800; 
+}
+
+.myBigInputs {
+margin-top: 23px; 
+text-align: center;
+}
+
+.myBottomContent {
+padding: 20px 20px;
+border-radius:5px;
+color:black;
+background-color: rgba(255, 255, 255, 0.9);
+}
+
+.myContent{
+padding: 0px 10px;
+margin-top: 5px;
+line-height: 1.2;
+}
+
+.myContent p {
+margin-bottom: 20px;  
+font-size: 34px;
+}
+
+.myInfo {
+margin-top: 20px;  
+}
+
+.myInputs {
+padding-left: 0;
+}
+
+.mySocialShare a {
+color: white; 
+font-family: "Titling Gothic FB Cond";
+}
+
+.myNumber {
+border: solid 4px #68B247;
+text-align: center;
+padding: 10px;
+border-radius: 5px;
+margin:10px;
+box-shadow: 0px 1px 0px #666;
+}
+
+.myNumber img {
+max-width: 100px;
+margin: 0px auto;
+} 
+
+.myNumberNotPicked {
+-webkit-transition: all 150ms cubic-bezier(0.250, 0.250, 0.750, 0.750); 
+   -moz-transition: all 150ms cubic-bezier(0.250, 0.250, 0.750, 0.750); 
+     -o-transition: all 150ms cubic-bezier(0.250, 0.250, 0.750, 0.750); 
+        transition: all 150ms cubic-bezier(0.250, 0.250, 0.750, 0.750); /* linear */
+            -webkit-transform: scale(0.98);
+
+}
+
+.myNumberPage02 {
+border: solid 4px #68B247;
+text-align: center;
+padding: 10px 20px;
+background-color: rgba(255, 255, 255, .9);  
+border-radius: 5px;
+}
+
+
+.myNumberPage02 .text {
+margin-bottom: 20px;  
+margin-top: 10px;
+}
+
+.myNumberPage02 h2 {
+margin-bottom: 10px;  
+margin-top: 10px ;
+}
+
+.myNumberPicked {
+border: solid 4px #68B247;
+text-align: center;
+padding: 10px;
+border-radius: 5px;
+margin:10px;
+box-shadow: 1px 1px 1px #666; 
+background-color: rgba(255, 255, 255, .95);
+-webkit-transition: all 100ms cubic-bezier(0.250, 0.250, 0.750, 0.750); 
+   -moz-transition: all 100ms cubic-bezier(0.250, 0.250, 0.750, 0.750); 
+     -o-transition: all 100ms cubic-bezier(0.250, 0.250, 0.750, 0.750); 
+        transition: all 100ms cubic-bezier(0.250, 0.250, 0.750, 0.750); /* linear */
+            -webkit-transform: scale(1.025);
+}
+
+.myPickDesktop {
+display: none;  
+}
+
+.myPickSmallScreens {
+display: none;  
+}
+
+.myPadding {
+padding: 10px 0 0 0;  
+}
+
+.myPollContent {
+background-color: rgba(255, 255, 255, .9);
+border-radius: 5px;
+font-family: "Titling Gothic FB Narr", sans-serif;
+padding-top: 20px;
+}
+
+.myRightPick {
+margin-right: 20px; 
+}
+
+.myRow {
+margin-bottom: 10px;  
+}
+
+.mySocialShare {
+border-radius: 5px;
+text-align: center;
+font-family: "Titling Gothic FB Cond";
+color: white;
+font-size: 21px;
+display: inline;
+height: 45px;
+line-height: 2.05;
+width: 100%;
+box-shadow: 0px 1px 0px #666;
+}
+
+.mySubContent {
+margin-top: 15px;
+font-size: 16px;
+line-height: 1.2;
+padding: 0 50px;
+}
+
+.myTopContent {
+background-color: rgba(255, 255, 255, .9);
+margin-top: 20px;
+padding-bottom: 30px;
+border-radius: 5px;
+padding: 10px 50px;
+}
+
+.myWhiteBackground {
+background-color: white;  
+height: 75px;
+}
+
+.noDisplay {  
+display:none;
+}
+
+.myDisplay {
+display:inline; 
+}
+
+#other_amount {
+border: 1px solid #000;
+background: #E5E4E5;
+width: 50%;
+margin-left: 15px;
+height: 25px;
+}
+
+.partner{
+display: none;
+}
+
+.payment, .billing{
+float: left;
+position: relative;
+}
+
+.payment #btnSubmit{
+background: #ffa600;
+border: none;
+border-radius: 3px;
+box-shadow: 0px 1px 0px #666;
+width: 140px;
+height: 40px;
+display: block;
+margin-top: 20px;
+margin-left: 20px;
+font-weight: bold;
+width:100%;
+margin-bottom: 20px;
+font-family: "Titling Gothic FB Cond";
+color: white;
+font-size: 24px;
+}
+
+.pickPicnic {
+padding: 10px;
+border-radius: 5px;
+font-family: "Titling Gothic FB Cond";
+font-size: 34px;
+text-align: center;
+background-color: rgba(255, 255, 255, .9)
+}
+
+.pickPicnicPage02 {
+font-family: "Titling Gothic FB Cond", sans-serif !important;
+font-size: 55px;
+text-align: center;
+margin-top: 20px;
+margin-bottom: 20px;
+padding: 10px;
+background-color: rgba(255, 255, 255, .9);  
+border-radius: 5px;
+}
+
+.pickPicnic p {
+font-family: "Titling Gothic FB Cond";  
+}
+
+.row {
+margin-right:0;
+margin-left:0;
+}
+
+.secondaryUpperText {
+font-family: "Titling Gothic FB Cond";
+text-align: center;
+margin-bottom: 20px;
+}
+
+.security{
+float: right;
+}
+
+.security a img{
+width: 85px;
+height: auto;
+}
+
+.small-message {
+font-size: 12px;
+color: #636466;
+font-style: italic;  
+padding-bottom: 15px;
+}
+
+.subtitle {
+margin: 0;
+font-size: 29px;
+}
+
+.title {
+margin: 0;  
+padding: 10px 0 0 0;
+}
+
+.topRow {
+margin-top: 10px; 
+}
+
+.twitterShare {
+background-color: #00B0ed;
+opacity: .9;
+box-shadow: 0px 2px 0px #666;
+margin-bottom: 20px;
+}
+
+.twitterShare:hover {
+opacity: .7;  
+}
+
+.underSubmit {
+font-size: 12px;
+color: #636466;
+font-style: italic; 
+}
+
+ul {
+list-style-type: none;
+margin: 5px;
+padding: 10px 0px;
+float: left;
+} 
+
+/* Extra Small Devices, Phones */ 
+@media only screen and (max-width : 480px) {
+
+.btn {
+font-size: 12px;  
+} 
+
+.container {
+padding-right: 10px;
+padding-left: 10px;
+margin-right: auto;
+margin-left: auto;
+padding-top: 0;
+font-family: "Titling Gothic FB Narr", sans-serif;
+}
+
+.myContent {
+padding: 0; 
+}
+
+.myContent p {
+font-size: 20px;
+margin-bottom: 0;
+}
+
+.myNumber {
+width: 100%;  
+margin: 10px 0;
+}
+
+.myNumberPage02 { 
+width: 100%;  
+}
+
+.myPollContent {
+margin-top: 10px;
+}
+
+.myPickDesktop {
+display: none;  
+}
+
+.myPickSmallScreens {
+display: inline;  
+}
+
+.myRow {
+margin-bottom: 10px;
+} 
+
+.mySocialShare {
+font-size: 16px;  
+line-height: 2.7;
+}
+
+.myTopContent {
+padding: 0;
+}
+
+.myTopContent {
+margin-top: 5px;
+padding: 10px 20px ;
+}  
+
+.pickPicnic {
+padding: 0;
+font-size: 24px;
+margin-bottom:0;
+}
+
+.pickPicnicPage02 {
+font-size: 24px;
+margin-top: 10px;
+margin-bottom: 10px;
+padding: 5px 0;
+} 
+}
+
+
+/* More Text Styles for Small Devices, Tablets */
+@media only screen and (min-width : 480px) and (max-width: 768px) {
+.myContent p {
+font-size: 26px;  
+}
+
+.myTopContent {
+margin-top: 20px;
+padding: 10px 20px ;
+}  
+
+.myRow {
+margin-bottom: 10px;
+} 
+
+.myPollContent {
+margin-top: 10px;  
+}
+
+.myPickDesktop {
+display: none;  
+}
+
+.myPickSmallScreens {
+display: inline;  
+}
+
+.pickPicnic {
+padding: 10px 0;
+font-size: 24px;
+margin-bottom:0;
+}
+
+.pickPicnicPage02 {
+font-size: 30px;
+margin-top: 10px;
+margin-bottom: 10px;
+}
+}
+
+/* Medium Devices, Desktops */
+@media only screen and (min-width : 992px) {
+
+.btn {
+font-size: 14px;  
+width: 90%;
+} 
+
+input {
+height: 45px; 
+}
+
+.mobileTitle {
+display:none; 
+}
+
+.myContent p {
+font-size: 46px;
+}
+
+.myInfo {
+margin-right: 10px;
+}
+
+.myNumber {
+width: 45%; 
+}
+
+.myPollContent {
+padding: 20px 10px; 
+margin: 0 auto;
+}
+
+.myRow {
+margin-bottom: 10px;
+}
+
+.pickPicnicPage02 {
+font-size: 30px;
+margin-top: 10px;
+margin-bottom: 10px;
+} 
+}
+
+/* Large Devices, Wide Screens */
+@media only screen and (min-width : 1200px) {
+.isMobile {
+ -webkit-transition: all 10000ms cubic-bezier(0.250, 0.250, 0.750, 0.750); 
+   -moz-transition: all 10000ms cubic-bezier(0.250, 0.250, 0.750, 0.750); 
+     -o-transition: all 10000ms cubic-bezier(0.250, 0.250, 0.750, 0.750); 
+        transition: all 10000ms cubic-bezier(0.250, 0.250, 0.750, 0.750); /* linear */ 
+}
+
+.myContent p {
+font-size: 60px;
+}
+
+.myNumber {
+width: 45%; 
+}
+
+.myPollContent {
+padding: 20px 10px; 
+}
+
+.mySubmission {
+padding: 0 20px 0 0;
+margin: 0;  
+}
+
+.pickPicnicPage02 {
+font-size: 40px;
+}
+}
+

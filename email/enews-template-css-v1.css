@@ -1,0 +1,88 @@
+body {
+	font-size 11.5px;
+	font-family: Arial, Helvetica, sans-serif;
+	width: 600px;
+}
+
+p {
+	font-size: 11.5px;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+h2 {
+	font-size: 14px;
+	font-family: Arial, Helvetica, sans-serif;
+	margin-bottom: 0;
+}
+ 
+a, a:link, a:visited, hr, h2 { color: #76c043; }
+
+a:hover { color: #ffb600; }
+
+
+.btnMoreInfo {
+	background: #79bf43;
+	background-image: -webkit-linear-gradient(top, #79bf43, #69962e);
+	background-image: -moz-linear-gradient(top, #79bf43, #69962e);
+	background-image: -ms-linear-gradient(top, #79bf43, #69962e);
+	background-image: -o-linear-gradient(top, #79bf43, #69962e);
+	background-image: linear-gradient(to bottom, #79bf43, #69962e);
+	-webkit-border-radius: 19;
+	-moz-border-radius: 19;
+	border-radius: 19px;
+	-webkit-box-shadow: 2px 2px 2px #666666;
+	-moz-box-shadow: 2px 2px 2px #666666;
+	box-shadow: 2px 2px 2px #666666;
+	color: #ffffff !important;
+	font-size: 12px;
+	padding: 10px 20px 10px 20px !important;
+	border: solid #79bf43 0px;
+	text-decoration: none;
+	text-transform:uppercase;
+	text-align:center;
+	float:left;
+}
+
+.btnMoreInfo:hover {
+	background: #8ad150;
+	background-image: -webkit-linear-gradient(top, #8ad150, #69962e);
+	background-image: -moz-linear-gradient(top, #8ad150, #69962e);
+	background-image: -ms-linear-gradient(top, #8ad150, #69962e);
+	background-image: -o-linear-gradient(top, #8ad150, #69962e);
+	background-image: linear-gradient(to bottom, #8ad150, #69962e);
+	text-decoration: none;
+	color: #ffffff;
+	text-transform:uppercase;
+}
+
+.preheader { display: none !important; }
+
+.msgViewer { text-align: center; }
+
+.enewsHeaderImage { 
+	width: 598px;
+	height: 103px;
+	border: 0;
+}
+
+.enewsWide, .enewsTripleWide { width: 100%; }
+
+.enewsFeatureImage { margin: 0;}
+
+.enewsFeatureCaption { margin: 0 11px 10px; }
+
+.enewsIndent, .tripleFirst { margin-top: 11px; margin-left: 11px; }
+
+.enewsIndent h2, .enewsIndent p { margin: 0 11px; }
+
+.enewsGreenline { width: 100%; }
+
+.enewsButton { margin: 0 11px 10px; }
+
+.enewsTripleWide td, .enewsTripleWide img, .enewsTripleWide p { margin: 0; }
+
+.tripleFirst h2, .tripleFirst p { margin-left: 11px; }
+
+.enewsProfileCopy h2, .enewsProfileCopy p { margin-left: 11px; }
+
+.enewsProfileCopy h2 { margin-top: 22px; }
