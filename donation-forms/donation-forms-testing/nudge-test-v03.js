@@ -109,15 +109,7 @@ function processDonationForm() {
 	$(function() {
 
 	//added for debugging
-	var my35 = $('#label_id_0').hasClass('level_selected');
-    if (my35) {
-      $("#errorfor50").show();
-      $(".nudge").css("bottom", "260px !important");
-    }
-    else {
-      $("#errorfor50").hide();
-      $(".nudge").css("bottom", "219px !important");
-    }
+	
 
 		//added for debugging
 		$('#errorforlowamount').hide();
@@ -131,6 +123,15 @@ function processDonationForm() {
 			$('.level').removeClass('level_selected');
 			$(thisLabel).addClass('level_selected');
       $('#errorforlowamount').hide();
+      var my35 = $('#label_id_0').hasClass('level_selected');
+	    if (my35) {
+	      $("#errorfor50").show();
+	      $("#nudge").addClass("nudge35");
+	    }
+	    else {
+	      $("#errorfor50").hide();
+	      $("#nudge").removeClass("nudge35");
+	    }
 		}
 		
 		function preSelect(myParameter) {

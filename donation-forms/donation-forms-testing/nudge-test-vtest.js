@@ -1,4 +1,4 @@
-[[U8:text/javascript]]
+
 /* Donation Pre-population for persistent lightbox test DECEMBER 2015 */
 var addlErrorText = '<span class="error addl-error-text">You may also contact us at 212-310-6672 for assistance from 9:00 am to 5:00 pm, Monday through Friday.</span>';
 
@@ -78,11 +78,11 @@ function processDonationForm() {
 		$.ajax({
 			type		: 'post',
 			data		: $('#donation_form_id').serialize(),
-			url			: '[[S551:CRDonationAPI]]',
+			url			: 'https://secure2.convio.net/cpc/site/CRDonationAPI',
 			success		: function(response) {
 				$('#btnSubmit').removeAttr('disabled').css('opacity','1');
 				$('#memLoader').hide();
-				window.location = '[[S6]]?pagename=donate_thanks';
+				window.location = 'https://secure2.convio.net/cpc/site/SPageServer?pagename=donate_thanks';
 				//window.location = 'https://secure2.convio.net/cpc/site/SPageNavigator/donate_thanks.html';
 			},
 			error		: function(response) {
@@ -112,11 +112,9 @@ function processDonationForm() {
 	var my35 = $('#label_id_0').hasClass('level_selected');
     if (my35) {
       $("#errorfor50").show();
-      $(".nudge").css("bottom", "260px !important");
     }
     else {
       $("#errorfor50").hide();
-      $(".nudge").css("bottom", "219px !important");
     }
 
 		//added for debugging
@@ -129,8 +127,13 @@ function processDonationForm() {
 		//show staff-"selected" State when page loads CPC (Mary/Bo edits)
 		function clickLevel(thisLabel) {
 			$('.level').removeClass('level_selected');
+			 // $('#level_id_6').prop('checked', false);
 			$(thisLabel).addClass('level_selected');
       $('#errorforlowamount').hide();
+
+			var benefits = '#' + $(thisLabel).find('input[type="radio"]').val();
+			$('.level-description > div').hide();
+			$(benefits).show();
 		}
 		
 		function preSelect(myParameter) {
@@ -142,8 +145,8 @@ function processDonationForm() {
 		}
 
 		
-	//show the "selected" State when clicking on a donation amount
-	$('.level').click(function(e){
+		//show the "selected" State when clicking on a donation amount
+		$('.level').click(function(e){
       $('#other_amount').val("");
       var upsellFor35 = $(this).is("#label_id_0");
       if (upsellFor35) {
@@ -240,7 +243,7 @@ function processDonationForm() {
 		//$('ul.levels input:checked').mouseover().mouseout(); //change to this as the click handler wasn't behaving with code edits
 
 		//preselect level here
-		[[?xxnullx::x[[S334:levelID]]x::preSelect(3);::preSelect([[S334:levelID]]);]]
+		preSelect(3);
 		
 	});
 	
