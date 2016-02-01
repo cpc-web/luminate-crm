@@ -1,0 +1,217 @@
+<!-- Winter Activity Page01 -->
+
+
+<!-- ////////////////// all code in <head> is inserted in new pagebuilder wrapper: 2016-quizzes-and-surveys ////////////////// -->
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="iso-8859-1" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <meta name="Robots" content="index, follow" />
+  <meta property="og:url" content="https://secure2.convio.net/cpc/site/SPageNavigator/winter_activity_poll_page01.html?utm_medium=social&utm_source=poll&utm_campaign=201602_winteractivity&s_src=201602_winteractivity&s_subsrc=social_poll" />
+  <meta property="og:title" content="Vote for Your Favorite Winter Activity" />
+  <meta property="og:description" content="Winter in the Park is magical and we're wondering which classic Central Park activity is truly New York's favorite? (Vote and you could win 4 tickets for a Central Park Tour!)" />
+  <meta property="og:image" content="https://secure2.convio.net/cpc/quiz/winteractivity_photography.jpg" />
+  <!-- Bootstrap core CSS + Template Stylesheet -->
+
+  <link href="https://cloud.webtype.com/css/2ebe6d20-6380-420e-a3c8-7a19f4a641e2.css" rel="stylesheet" type="text/css" />
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  <link href="https://secure2.convio.net/cpc/redesign/css/bootstrap-303-min.css" rel="stylesheet" />
+  <link href="https://secure2.convio.net/cpc/quiz/winteractivity.css" rel="stylesheet" />
+  <link rel='shortcut icon' href='https://secure2.convio.net/cpc/favicon.ico' type='image/x-icon'/ >
+  <link rel='icon' href='https://secure2.convio.net/cpc/favicon.ico' type='image/x-icon'/ >
+  <!-- Bootstrap core JavaScript
+  ================================================== -->
+  <!-- Place in-page JS at the end of the document so the pages load faster -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+  <script type='text/javascript' src="https://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+  <script type='text/javascript' src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.7.1/modernizr.min.js"></script>
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-17339074-1', 'auto');
+    ga('send', 'pageview');
+  </script>
+
+
+</head>
+
+<!-- ////////////////// all code in <head> is inserted in new pagebuilder wrapper: 2016-quizzes-and-surveys ////////////////// -->
+
+<div ng-app="PicnicApp" ng-controller="picnicPollController">
+  <div class="row myWhiteBackground">
+    <div class="col-xs-12 ">
+      <div id="logo"></div>
+    </div>
+  </div>  
+  <div style="display:none;">
+    <img src="https://secure2.convio.net/cpc/images/content/pagebuilder/central-park-picnic-og.jpg" />
+  </div>
+  <div class="row maincentered">
+    <div class="myPadding"></div>
+  </div>
+  <div class="container"> 
+    <div class="row myrow">
+        <div class="col-xs-12 myContent">
+          <p class="secondaryUpperText">
+            <strong>
+              Vote for Your Favorite Winter Activity
+            </strong>
+        </p>
+        </div>
+        <div class-"col-xs-12">
+          <p align="center">Winter in the Park is magical and we're wondering which classic Central Park activity is truly New York's favorite?</p>
+          <p align="center">Cast your vote and be entered to win four tickets for an Official Central Park Tour.</p>
+        </div>
+      <div class="col-xs-12 myPollContent">
+        <div class="col-sm-12 col-md-8">
+          <div ng-repeat="p in picks">
+            <div class="col-sm-12 myNumber myNumberNotPicked clickable" ng-click="vote(p.pick)"
+                ng-show="!isMobile || !pick || pick == p.pick">
+              <img ng-src="{{ p.image }}" class="img-responsive myPickImg">
+              <button class="btn">
+                <i class="fa fa-square-o"></i><i class="fa fa-check-square-o"></i>&nbsp;&nbsp;{{ p.title }}
+              </button>
+            </div> 
+          </div>
+        </div>  
+   
+        <div class="col-sm-12 col-md-4 mySubmission" ng-show="!isMobile || pick">
+          <div class="myInfo">
+            <p>Enter your info to win:</p>
+          </div>
+          <!-- https://secure2.convio.net/cpc/site/SSurvey -->
+          <form name="form" action="https://secure2.convio.net/cpc/site/SSurvey" method="post">
+
+            <input name="cons_info_component" type="hidden" value="t">
+            <input name="s_rememberMe" type="hidden" value="on">
+            <input name="remember_me_opt_in_requested" type="hidden" value="true">
+            <input name="1872_5440_2_6605" type="hidden" value="NOREPLY">
+            <input name="1872_5440_3_6602" type="hidden" value="">
+            <input name="1872_5440_4_6603" type="hidden" value="">
+            <input name="s_src" type="hidden" value="" />
+            <input name="s_subsrc" type="hidden" value="" /> 
+            <input name="denySubmit" type="hidden">
+
+            <input id="SURVEY_ID" name="SURVEY_ID" type="hidden" value="6207" />
+            <input id="ERRORURL" name="ERRORURL" type="hidden"
+                value="SPageNavigator/winter_activity_poll_page02.html" />
+            <input id="NEXTURL" name="NEXTURL" type="hidden" value="" />
+
+            <input class="text" type="text" name="cons_first_name" type="text" maxlength="50" placeholder="* First Name"
+                ng-model="user.firstName" required="" />
+            <div class="error" ng-show="submitted || form.cons_first_name.$touched">
+              <div ng-show="form.cons_first_name.$error.required">Tell us your first name.</div>
+            </div>
+
+            <input class="text" type="text" name="cons_last_name" type="text" maxlength="50" placeholder="* Last Name"
+                ng-model="user.lastName" required="" />
+            <div class="error" ng-show="submitted || form.cons_last_name.$touched">
+              <div ng-show="form.cons_last_name.$error.required">
+                Tell us your last name.
+              </div>
+            </div>
+
+            <input class="text" type="email" name="cons_email" maxlength="100" placeholder="* Email" 
+                ng-model="user.email" required="" />
+            <div class="error" ng-show="submitted || form.cons_email.$touched">
+              <span ng-show="form.cons_email.$error.required">Tell us your email.</span>
+              <span ng-show="form.cons_email.$error.email">This is not a valid email.</span>
+            </div>
+
+            <input class="text" type="text" name="cons_zip_code" maxlength="11" placeholder="* ZIP code"
+                ng-model="user.zipcode" required=""/>
+            <div class="error" ng-show="submitted || form.cons_zip_code.$touched">
+              <span ng-show="form.cons_zip_code.$error.required">Tell us your zipcode.</span>
+            </div>
+            <input name="ACTION_SUBMIT_SURVEY_RESPONSE" type="hidden" value="SUBMIT" />
+            <input id="btnSubmit" type="submit" value="SUBMIT" ng-click="update(form)" />
+            <div class="error" ng-show="submitted && !pick">
+              Click on one of the boxes to vote!
+            </div>
+            <div class="small-message">
+              <p>
+                By clicking submit, you will join our online community and receive periodic updates from Central Park Conservancy. You can unsubscribe at any time.
+              </p>
+            </div>    
+          </form>
+        </div>  
+      </div> <!-- END XS-12 -->
+    </div> <!-- end ROW -->
+  </div>    
+<script>
+
+//Sets screen size type basd on the screen width
+//The widths should match bootstrap responsive classes
+
+
+var app = angular.module('PicnicApp', []);
+
+app.controller('picnicPollController', function($scope, $timeout) {
+  var resize = function() {
+    var width = $(window).width();
+    $scope.isMobile = width <= 767;
+    $scope.isTablet = width > 767 && width <= 991;
+    $scope.isDesktop = width > 991;
+    $scope.$apply();
+  }
+
+  $timeout(resize, 1);
+  $(window).resize(resize);
+
+  $scope.picks = [{
+    pick: 'walking',
+    title: 'Going for a walk',
+    image: 'https://secure2.convio.net/cpc/quiz/winteractivity_walking.jpg'
+  }, {
+    pick: 'photography',
+    title: 'Photographing fresh snow',
+    image: 'https://secure2.convio.net/cpc/quiz/winteractivity_photography.jpg'
+  }, {
+    pick: 'sledding',
+    title: 'Sledding',
+    image: 'https://secure2.convio.net/cpc/quiz/winteractivity_sledding.jpg'
+  }, {
+    pick: 'skating',
+    title: 'Ice skating',
+    image: 'https://secure2.convio.net/cpc/quiz/winteractivity_skating.jpg'
+  }];
+
+  $scope.vote = function(pick) {
+    $timeout(function() {
+      $scope.pick = pick;
+    }, 200);
+  };
+
+  $scope.update = function(form) {
+    $scope.submitted = true;
+    if (form.$valid && $scope.pick) {
+      var nextUrl = 'https://secure2.convio.net/cpc/site/SPageNavigator/winter_activity_poll_page02.html';
+      $('#NEXTURL').val(nextUrl + '?x=' + $scope.pick);
+        // ga('send', 'event', 'Poll Ice Festival', 'Submit', 'Successful Submission', $scope.pick);
+      document.getElementsByName(form.$name)[0].submit();
+    }
+  };
+});
+
+$(function() {  
+  // Prevent form submit due to action attribute being present.
+  $("form[name='form']").on("submit", function (e) {
+    e.preventDefault();
+  });
+
+  // Interaction on selected box.
+  $( ".myNumber" ).on( "click", function() {
+    $(".myNumber").find(".fa-check-square-o").css("display", "none");
+    $(".myNumber").find(".fa-square-o").css("display", "inline");
+    $(".myNumber").find(".img-responsive").css("opacity","1");
+    $(this).find('.fa').toggle();
+    $(this).find(".img-responsive").css("opacity",".4");
+  });
+});
+
+</script>
